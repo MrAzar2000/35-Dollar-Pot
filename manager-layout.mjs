@@ -72,7 +72,7 @@ export function enhanceManagerLayout(root,{page,team,data,setTab,esc,feedbackPag
   view.dataset.layoutReady='true';
   view.querySelectorAll('details').forEach(fold=>{if(fold.matches('[data-lineup-mode]')||fold.querySelector('table,svg,.rank-history-list,[data-lineup-mode]'))fold.open=true;});
   const shortcuts={
-    dash:[['parlay','Parlay'],['standings','Standings'],['scoreboard','Scoreboard'],['faab','Waivers'],['players','Players']],
+    dash:[['standings','Standings'],['scoreboard','Scoreboard'],['faab','Waivers'],['players','Players']],
     myteam:[['standings','Standings'],['players','Players'],['faab','Waivers'],['block','Trade block']],
     matchup:[['scoreboard','Scoreboard'],['myteam','My lineup'],['h2h','Head-to-head']],
     analytics:[['standings','Standings'],['power','Power rankings'],['odds','Playoff odds'],['outlook','Outlook']],
@@ -89,9 +89,7 @@ export function enhanceManagerLayout(root,{page,team,data,setTab,esc,feedbackPag
     h2h:[['matchup','Matchup'],['history','History'],['records','Record book']],
     records:[['history','History'],['analytics','Stats'],['shame','Hall of Shame']],
     draft:[['myteam','My team'],['players','Players'],['history','History']],
-    parlay:[['dash','Home'],['matchup','Matchup'],['rules','Rules']],
-    parlayresults:[['parlay','Parlay'],['teams','All teams'],['shame','Hall of Shame']],
-    rules:[['standings','Standings'],['faab','Waivers'],['parlay','Parlay']],
+    rules:[['standings','Standings'],['faab','Waivers']],
     shame:[['records','Record book'],['history','History'],['defense','Manager Defense']],
     defense:[['analytics','Stats'],['shame','Hall of Shame'],['standings','Standings']],
     feedback:[['dash','Home'],['more','More']],

@@ -468,7 +468,6 @@ body .wpg-line { stroke-width:2.5; }
 }
 
 /* A fuller league home, with navigation ahead of the scores and cards. */
-.home-parlay { margin:16px 0; }
 .home-league-overview { margin:20px 0;align-items:start; }
 .home-ranking { display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line); }
 .home-ranking .rankcol { flex:0 0 24px; }
@@ -639,12 +638,6 @@ body .num-neg,body #app .kpi .k-val.num-neg,body .hm-stats b.num-neg { color:var
 .home-matchups .mx-heading { margin-bottom:12px; }
 .home-matchups .g-sb { gap:10px; }
 
-/* Home parlay once every pick is in */
-.parlay-done { display:flex;align-items:center;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;padding:12px 14px;border:1px solid var(--line);border-left:3px solid var(--win);border-radius:var(--radius);background:var(--surface); }
-.parlay-done .pd-txt { display:flex;flex-direction:column;gap:2px;min-width:0; }
-.parlay-done .pd-wk { font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--accent); }
-.parlay-done .pd-st { font-size:13.5px;font-weight:600; }
-.parlay-done .btn { flex:0 0 auto; }
 
 /* Rounded boxes around each player: My Team roster rows and the matchup popup. */
 body .myteam .rrow,body #teamDetail .rrow { margin:0 0 6px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface-2); }
@@ -1070,60 +1063,6 @@ body .lx-row:not(.lx-hd) > .lx-slot,body.phone .lx-row:not(.lx-hd) > .lx-slot { 
 
 /* Footer: how often league data refreshes. */
 .site-release .site-refresh-note { flex-basis:100%;width:100%;margin:0;font-size:12px;line-height:1.5;color:var(--ink-3); }
-
-/* Team profile: parlay results dropdown along the bottom of the team header. */
-.team-detail-header > .team-parlay,.hm > .team-parlay { flex-basis:100%;width:100%;margin:2px 0 -4px;padding-top:12px;border-top:1px solid var(--line); }
-.team-parlay > summary { min-height:36px;gap:10px;font-size:13px;font-weight:700; }
-.team-parlay > summary small { margin-left:auto;font-size:13px;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums; }
-.team-parlay .tp-body { margin-top:4px; }
-.team-parlay .tp-body > .metricnote { margin:0 0 4px; }
-.tp-row { display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:baseline;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:13px; }
-.tp-wk { color:var(--ink-3);font-weight:700;font-variant-numeric:tabular-nums; }
-.tp-pick { min-width:0;overflow-wrap:anywhere; }
-.tp-pick em { font-style:normal;color:var(--t-amber);white-space:nowrap; }
-.tp-row b { font-size:12px;letter-spacing:.04em;text-transform:uppercase; }
-
-/* Parlay Results page */
-.pr-tiles { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;text-align:center;margin-bottom:14px; }
-.pr-chart,.pr-weeks { margin-bottom:14px; }
-.pr-chart .barrow { cursor:pointer;border-radius:8px; }
-.pr-chart .barrow:focus-visible { outline:2px solid var(--accent);outline-offset:2px; }
-.pr-chart .barrow .bl { width:130px; }
-.pr-chart .barrow .bv { width:auto;min-width:86px;white-space:nowrap;font-variant-numeric:tabular-nums; }
-.pr-chart .barrow .bv b { color:var(--ink); }
-.pr-chart .barrow .bv small { margin-left:4px;color:var(--ink-3); }
-.pr-week { display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:baseline;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:13px; }
-.pr-week:first-of-type { border-top:0; }
-.pr-week span { color:var(--ink-2); }
-.pr-week small { font-weight:800;letter-spacing:.04em; }
-body.phone .pr-chart .barrow .bl { width:auto; }
-body.phone .pr-chart .barrow .bv { min-width:0; }
-@media(max-width:360px) { .pr-tiles { gap:8px; } }
-
-/* Parlay page: submitted legs line up in a fixed grid. Desktop is one line per leg;
-   phones use two lines (manager and result, then the pick with odds and submit time). */
-.pl-leg { display:grid;grid-template-columns:150px minmax(0,1fr) auto 76px;align-items:baseline;gap:4px 14px;padding:10px 0;border-bottom:1px solid var(--line); }
-.pl-leg:last-child { border-bottom:0; }
-.pl-mgr { min-width:0;font-weight:700;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
-.pl-pick { min-width:0;font-size:13.5px;overflow-wrap:anywhere; }
-.pl-odds { color:var(--accent);font-weight:700;font-size:12.5px;white-space:nowrap; }
-.pl-time { font-size:12px;color:var(--ink-3);white-space:nowrap;text-align:right; }
-.pl-res { justify-self:end;font-size:11px;font-weight:800;letter-spacing:.04em;padding:2px 7px;border-radius:6px;color:var(--ink-3);background:var(--surface-2); }
-.pl-res.win { color:var(--win);background:color-mix(in srgb,var(--win) 15%,transparent); }
-.pl-res.loss { color:var(--loss);background:color-mix(in srgb,var(--loss) 15%,transparent); }
-.pl-admin { grid-column:1/-1;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px; }
-@media(max-width:700px) {
-  .pl-leg { grid-template-columns:minmax(0,1fr) auto;gap:5px 12px; }
-  .pl-mgr { grid-column:1;grid-row:1;font-size:14px; }
-  .pl-res { grid-column:2;grid-row:1; }
-  .pl-pick { grid-column:1;grid-row:2; }
-  .pl-time { grid-column:2;grid-row:2; }
-  .pl-admin { grid-row:3;flex-wrap:nowrap;gap:6px; }
-  /* The select keeps its own label for screen readers; the visible "Result" word is dropped to fit one row. */
-  .pl-admin label { font-size:0;flex:1 1 auto;min-width:0; }
-  .pl-admin select { width:100%;min-width:0;font-size:16px; }
-  .pl-admin .btn { flex:none;min-height:38px;padding:6px 12px;font-size:13px; }
-}
 
 /* Pages opened from More: a small back button at the top. */
 .more-back { display:inline-flex;align-items:center;gap:4px;min-height:38px;padding:6px 14px 6px 8px;margin-bottom:12px;font-size:13px; }

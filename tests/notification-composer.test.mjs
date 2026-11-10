@@ -9,7 +9,7 @@ function composer(){
   const wrap={setAttribute(){},addEventListener(){},querySelector:s=>controls[s],querySelectorAll:()=>recipients};
   const calls=[];let finish;
   const ctx=vm.createContext({ADMIN:true,D:{teams:[{id:1,name:'One'}]},esc:s=>s,closeMatchup(){},document:{createElement:()=>wrap,body:{appendChild(){},classList:{add(){}}},addEventListener(){}},mdlKey(){},INBOX:{refresh(){}},sb:{from:table=>({insert:payload=>{calls.push({table,payload});return new Promise(resolve=>finish=resolve);}})}});
-  vm.runInContext(html.slice(html.indexOf('function adminPush(){'),html.indexOf('function adminGradeParlay')),ctx);ctx.adminPush();
+  vm.runInContext(html.slice(html.indexOf('function adminPush(){'),html.indexOf('function adminTradeBlock')),ctx);ctx.adminPush();
   controls['#pnTitle'].value='League update';controls['#pnBody'].value='Message';
   return {controls,recipients,calls,send:()=>controls['#pnSend'].onclick(),finish:result=>finish(result)};
 }

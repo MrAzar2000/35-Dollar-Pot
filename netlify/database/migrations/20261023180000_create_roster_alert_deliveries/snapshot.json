@@ -3,7 +3,7 @@
   "dialect": "postgres",
   "id": "ea8fd1f8-6074-4db7-8ee9-9c403ce83eef",
   "prevIds": [
-    "467dc836-e29b-4872-8feb-e0944c2a6c7f"
+    "04a3b66f-e1b2-46f8-8951-29b544fa240c"
   ],
   "ddl": [
     {
@@ -15,18 +15,6 @@
     {
       "isRlsEnabled": false,
       "name": "notification_events",
-      "entityType": "tables",
-      "schema": "public"
-    },
-    {
-      "isRlsEnabled": false,
-      "name": "parlay_legs",
-      "entityType": "tables",
-      "schema": "public"
-    },
-    {
-      "isRlsEnabled": false,
-      "name": "parlay_weeks",
       "entityType": "tables",
       "schema": "public"
     },
@@ -218,201 +206,6 @@
       "table": "notification_events"
     },
     {
-      "type": "serial",
-      "typeSchema": null,
-      "notNull": true,
-      "dimensions": 0,
-      "default": null,
-      "generated": null,
-      "identity": null,
-      "name": "id",
-      "entityType": "columns",
-      "schema": "public",
-      "table": "parlay_legs"
-    },
-    {
-      "type": "integer",
-      "typeSchema": null,
-      "notNull": true,
-      "dimensions": 0,
-      "default": null,
-      "generated": null,
-      "identity": null,
-      "name": "season",
-      "entityType": "columns",
-      "schema": "public",
-      "table": "parlay_legs"
-    },
-    {
-      "type": "integer",
-      "typeSchema": null,
-      "notNull": true,
-      "dimensions": 0,
-      "default": null,
-      "generated": null,
-      "identity": null,
-      "name": "week",
-      "entityType": "columns",
-      "schema": "public",
-      "table": "parlay_legs"
-    },
-    {
-      "type": "integer",
-      "typeSchema": null,
-      "notNull": true,
-      "dimensions": 0,
-      "default": null,
-      "generated": null,
-      "identity": null,
-      "name": "team_id",
-      "entityType": "columns",
-      "schema": "public",
-      "table": "parlay_legs"
-    },
-    {
-      "type": "text",
-      "typeSchema": null,
-      "notNull": true,
-      "dimensions": 0,
-      "default": null,
-      "generated": null,
-      "identity": null,
-      "name": "manager",
-      "entityType": "columns",
-      "schema": "public",
-      "table": "parlay_legs"
-    },
-    {
-      "type": "text",
-      "typeSchema": null,
-      "notNull": true,
-      "dimensions": 0,
-      "default": null,
-      "generated": null,
-      "identity": null,
-      "name": "pick",
-      "entityType": "columns",
-      "schema": "public",
-      "table": "parlay_legs"
-    },
-    {
-      "type": "text",
-      "typeSchema": null,
-      "notNull": false,
-      "dimensions": 0,
-      "default": null,
-      "generated": null,
-      "identity": null,
-      "name": "odds",
-      "entityType": "columns",
-      "schema": "public",
-      "table": "parlay_legs"
-    },
-    {
-      "type": "text",
-      "typeSchema": null,
-      "notNull": true,
-      "dimensions": 0,
-      "default": "'pending'",
-      "generated": null,
-      "identity": null,
-      "name": "result",
-      "entityType": "columns",
-      "schema": "public",
-      "table": "parlay_legs"
-    },
-    {
-      "type": "text",
-      "typeSchema": null,
-      "notNull": false,
-      "dimensions": 0,
-      "default": null,
-      "generated": null,
-      "identity": null,
-      "name": "source_id",
-      "entityType": "columns",
-      "schema": "public",
-      "table": "parlay_legs"
-    },
-    {
-      "type": "timestamp with time zone",
-      "typeSchema": null,
-      "notNull": true,
-      "dimensions": 0,
-      "default": "now()",
-      "generated": null,
-      "identity": null,
-      "name": "created_at",
-      "entityType": "columns",
-      "schema": "public",
-      "table": "parlay_legs"
-    },
-    {
-      "type": "serial",
-      "typeSchema": null,
-      "notNull": true,
-      "dimensions": 0,
-      "default": null,
-      "generated": null,
-      "identity": null,
-      "name": "id",
-      "entityType": "columns",
-      "schema": "public",
-      "table": "parlay_weeks"
-    },
-    {
-      "type": "integer",
-      "typeSchema": null,
-      "notNull": true,
-      "dimensions": 0,
-      "default": null,
-      "generated": null,
-      "identity": null,
-      "name": "season",
-      "entityType": "columns",
-      "schema": "public",
-      "table": "parlay_weeks"
-    },
-    {
-      "type": "integer",
-      "typeSchema": null,
-      "notNull": true,
-      "dimensions": 0,
-      "default": null,
-      "generated": null,
-      "identity": null,
-      "name": "week",
-      "entityType": "columns",
-      "schema": "public",
-      "table": "parlay_weeks"
-    },
-    {
-      "type": "text",
-      "typeSchema": null,
-      "notNull": true,
-      "dimensions": 0,
-      "default": "''",
-      "generated": null,
-      "identity": null,
-      "name": "participants",
-      "entityType": "columns",
-      "schema": "public",
-      "table": "parlay_weeks"
-    },
-    {
-      "type": "text",
-      "typeSchema": null,
-      "notNull": false,
-      "dimensions": 0,
-      "default": null,
-      "generated": null,
-      "identity": null,
-      "name": "total_odds",
-      "entityType": "columns",
-      "schema": "public",
-      "table": "parlay_weeks"
-    },
-    {
       "type": "text",
       "typeSchema": null,
       "notNull": true,
@@ -530,55 +323,6 @@
       "table": "trade_digest_runs"
     },
     {
-      "nameExplicit": true,
-      "columns": [
-        {
-          "value": "source_id",
-          "isExpression": false,
-          "asc": true,
-          "nullsFirst": false,
-          "opclass": null
-        }
-      ],
-      "isUnique": true,
-      "where": null,
-      "with": "",
-      "method": "btree",
-      "concurrently": false,
-      "name": "parlay_source_id",
-      "entityType": "indexes",
-      "schema": "public",
-      "table": "parlay_legs"
-    },
-    {
-      "nameExplicit": true,
-      "columns": [
-        {
-          "value": "season",
-          "isExpression": false,
-          "asc": true,
-          "nullsFirst": false,
-          "opclass": null
-        },
-        {
-          "value": "week",
-          "isExpression": false,
-          "asc": true,
-          "nullsFirst": false,
-          "opclass": null
-        }
-      ],
-      "isUnique": true,
-      "where": null,
-      "with": "",
-      "method": "btree",
-      "concurrently": false,
-      "name": "parlay_week_season",
-      "entityType": "indexes",
-      "schema": "public",
-      "table": "parlay_weeks"
-    },
-    {
       "columns": [
         "id"
       ],
@@ -596,26 +340,6 @@
       "name": "notification_events_pkey",
       "schema": "public",
       "table": "notification_events",
-      "entityType": "pks"
-    },
-    {
-      "columns": [
-        "id"
-      ],
-      "nameExplicit": false,
-      "name": "parlay_legs_pkey",
-      "schema": "public",
-      "table": "parlay_legs",
-      "entityType": "pks"
-    },
-    {
-      "columns": [
-        "id"
-      ],
-      "nameExplicit": false,
-      "name": "parlay_weeks_pkey",
-      "schema": "public",
-      "table": "parlay_weeks",
       "entityType": "pks"
     },
     {

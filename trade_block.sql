@@ -1,6 +1,6 @@
 -- Trade Block marketplace. Run once in Supabase -> SQL Editor.
 -- One listing per team (team_id is the key). Visitors can post, update and clear their
--- listing from the site with no login -- the same open trust model as chat and parlay.
+-- listing from the site with no login -- the same open trust model as chat.
 -- You can also remove a listing from Supabase -> Table Editor -> trade_block.
 create table if not exists public.trade_block (
   team_id     int primary key,
