@@ -874,7 +874,7 @@ export function installManagerExperience(api) {
     try {
       if (navigator.share)
         await navigator.share({
-          title: "MFL · " + (api.labels[api.getCurrent()] || "League"),
+          title: "35DP · " + (api.labels[api.getCurrent()] || "League"),
           url: location.href,
         });
       else if (navigator.clipboard) {
@@ -1060,7 +1060,7 @@ export function installManagerExperience(api) {
           ),
         );
       });
-      download(rows, "mfl-" + api.getCurrent() + ".csv");
+      download(rows, "35dp-" + api.getCurrent() + ".csv");
     }
   });
   // Give every modal a name, focus management, and a keyboard-contained interaction.
@@ -1159,7 +1159,7 @@ export function installManagerExperience(api) {
         )
           throw new Error("Enable notifications first.");
         const sw = await navigator.serviceWorker.ready;
-        await sw.showNotification("MFL is ready", {
+        await sw.showNotification("35DP is ready", {
           body: "Notifications can appear on this device.",
           icon: "/icon-192.png",
           tag: "mfl-test",

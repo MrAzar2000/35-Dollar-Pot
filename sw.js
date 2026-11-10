@@ -1,4 +1,4 @@
-/* Mitch Fantasy League service worker: Web Push + taps, and an app-shell cache
+/* 35 Dollar Pot service worker: Web Push + taps, and an app-shell cache
    so the Home Screen app opens on weak signal or offline.
    - Site files are network-first: online visitors always get the latest
      deploy; the cached copy is used only when the network fails or is slow.
@@ -71,7 +71,7 @@ self.addEventListener("push", (e) => {
   let d = {};
   try { d = e.data ? e.data.json() : {}; }
   catch (_) { d = { body: e.data ? e.data.text() : "" }; }
-  const title = d.title || "Mitch Fantasy League";
+  const title = d.title || "35 Dollar Pot";
   const opts = {
     body: d.body || "",
     icon: "/icon-192.png",

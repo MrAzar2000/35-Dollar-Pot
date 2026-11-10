@@ -1,7 +1,7 @@
 <!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Mitch Fantasy League</title>
+<title>35 Dollar Pot</title>
 
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" type="image/png" href="/icon-192.png">
@@ -10,18 +10,18 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="MFL">
+<meta name="apple-mobile-web-app-title" content="35DP">
 <script data-goatcounter="https://mrazar2000.goatcounter.com/count" data-goatcounter-settings='{"no_onload": true}'
         async src="https://gc.zgo.at/count.js" onload="(window.__gcq||[]).forEach(function(v){window.goatcounter.count(v)});window.__gcq=null"></script>
 <script>
 /* Start downloading the league as soon as the page opens, in parallel with the
    app code, instead of waiting for the Supabase library to load first. */
-window.__LDP=fetch("https://tcaqsuqoiinnmvmmojth.supabase.co/rest/v1/league_data?id=eq.current&select=data",{headers:{apikey:"sb_publishable_dY9khbDJVWUnh6XfnBEf1w_Thn3r9t_"},cache:"no-store"})
+window.__LDP=fetch("https://iuvkkmgslahotprlbeuq.supabase.co/rest/v1/league_data?id=eq.current&select=data",{headers:{apikey:"sb_publishable_0DXnF5JHjZ7LameIvgu4rg_Gpzn6wcT"},cache:"no-store"})
   .then(function(r){if(!r.ok)throw new Error("League data "+r.status);return r.json();})
   .then(function(rows){return rows&&rows[0]&&rows[0].data||null;});
 window.__LDP.catch(function(){});
 </script>
-<link rel="preconnect" href="https://tcaqsuqoiinnmvmmojth.supabase.co" crossorigin>
+<link rel="preconnect" href="https://iuvkkmgslahotprlbeuq.supabase.co" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm" crossorigin>
 <link rel="modulepreload" href="/manager-experience.mjs">
@@ -1322,7 +1322,7 @@ body.phone .lx-p{padding:11px 8px}.full-context{font-size:13px}.full-context .ga
   <header class="appbar" id="appbar">
     <div class="ab-in">
       <button class="ab-brand" id="abBrand" aria-label="League home">
-        <div class="mark" id="mark">MFL</div>
+        <div class="mark" id="mark">35DP</div>
         <span class="ab-week" id="headerWeek" hidden><span class="abw-main"><small>Week</small><b id="headerWeekNumber"></b></span></span>
         <div class="ab-id"><h1 id="lgname">League</h1><div class="sub" id="lgsub">—</div></div>
       </button>
@@ -1357,7 +1357,7 @@ let EXPERIENCE=null;
 let INBOX=null;
 let navigationFromHistory=false;
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
-const sb=createClient("https://tcaqsuqoiinnmvmmojth.supabase.co","sb_publishable_dY9khbDJVWUnh6XfnBEf1w_Thn3r9t_",{global:{fetch:(...args)=>window.fetch(...args)}});
+const sb=createClient("https://iuvkkmgslahotprlbeuq.supabase.co","sb_publishable_0DXnF5JHjZ7LameIvgu4rg_Gpzn6wcT",{global:{fetch:(...args)=>window.fetch(...args)}});
 /* ---------- league data: last good copy on this device, then the network ---------- */
 const LEAGUE_CACHE="mfl-league-cache-v1";
 function readCachedLeague(){try{const d=JSON.parse(localStorage.getItem(LEAGUE_CACHE)||"null");return d&&d.meta&&d.meta.lastUpdated&&Array.isArray(d.teams)?d:null;}catch(e){return null;}}
@@ -1587,7 +1587,7 @@ const TITLE_HELP={"All-Play Record":"Your record if you played all 11 other team
   "Consistency":"How much your weekly score swings (standard deviation). Lower = steadier.","Strength of Schedule":"Average season PPG of the opponents you've faced.","Lineup Efficiency":"Points scored divided by the best possible lineup from your starters + bench that week.",
   "Schedule Swap":"Your record if you'd played each other team's schedule.","Best Pickups":"Waiver and free-agent adds ranked by points scored as a starter.","Single-Game Records":"Best and worst single-week performances this season.",
   "Top 5":"Top five weekly scores this season.","Streaks":"Longest winning and losing runs this season.","Week by Week":"Every team's score each week; green = won, red = lost.","Defensive Ratings":"Points allowed plus how far below their average your opponents scored.",
-  "Title Droughts":"Seasons since each manager's last championship.","All-Time Leaderboard":"Career record and points since 2016.","All-Time Rivalries":"Head-to-head records between two managers across every season.",
+  "Title Droughts":"Seasons since each manager's last championship.","All-Time Leaderboard":"Career record and points since 2024.","All-Time Rivalries":"Head-to-head records between two managers across every season.",
   "Weekly scores":"Your score each week against the league average (dashed line).","Roster":"Current ESPN roster, game context, points and projections.","Draft Picks":"Everyone this team drafted, in pick order.",
   "Budget Used":"FAAB spent out of the season budget.","Pickups by Team":"Players each team added from waivers or free agency.","Positions drafted by round":"How many of each position went in each draft round.","More Metrics":"Extra season stats per team.",
   "Playoff Picture":"Seeds if the season ended today, and the bracket that would follow.","Trade":"Season points for the players on each side of the trade."};
@@ -1630,7 +1630,7 @@ function setTab(id,fresh=false,section){
   // visitor stats: each tab counts as its own page (/standings, /odds, ...); re-sorting a page doesn't count again
   if(id!==setTab.counted){setTab.counted=id;const v={path:"/"+(id==="dash"?"":id),title:LABELS[id]||id};
     try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count(v);else(window.__gcq=window.__gcq||[]).push(v);}catch(e){}}
-  // shareable link to this page, e.g. mitch-fantasy.netlify.app/#standings
+  // shareable link to this page, e.g. 35-dollar-pot.netlify.app/#standings
   try{ const existing=(location.hash||'').slice(1).split('?')[0];const state={mflSection:SECTION};if(existing!==id){const url=id==='dash'?location.pathname:'#'+id;history[navigationFromHistory||sameView?'replaceState':'pushState'](state,'',url);}else if(history.state?.mflSection!==SECTION)history.replaceState(state,'',location.href); }catch(e){}
   if(id==='players')EXPERIENCE?.updateUrl();
   if(id==='matchup'&&mxWeek!=null)try{history.replaceState(history.state,'','#'+id+'?week='+mxWeek);}catch(e){}
@@ -3540,11 +3540,11 @@ function shareCard(x){
   const aw=s.as>s.hs;side(a,s.as,430,"#ff9470",aw,x.awayProj,wp?Math.round(wp.pa*100):null);side(h,s.hs,680,"#6ea8ff",!aw,x.homeProj,wp?Math.round(wp.ph*100):null);
   const W=aw?a:h,L=aw?h:a,m=Math.abs(s.as-s.hs),verb=!final?"leads":m>=40?"destroyed":m>=20?"handled":m>=5?"beat":"edged";
   g.textAlign="center";g.fillStyle="#ffd23f";const line=`${W.name} ${verb} ${L.name}`;fit(line,940,50,"800");g.fillText(line,540,880);
-  g.fillStyle="#5b6375";g.font='600 28px "Archivo", system-ui, sans-serif';g.fillText("mitch-fantasy.netlify.app",540,1010);
+  g.fillStyle="#5b6375";g.font='600 28px "Archivo", system-ui, sans-serif';g.fillText("35-dollar-pot.netlify.app",540,1010);
   const modal=document.createElement('div');modal.className='mdl';modal.id='mdl';modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');modal.setAttribute('aria-label','Share matchup card');
   modal.innerHTML=`<div class="mdl-box card-p"><div class="mdl-top"><h2>Share card</h2><button type="button" class="x" aria-label="Close">×</button></div><img alt="Matchup share card" style="width:100%;max-width:400px;display:block;margin:auto" src="${c.toDataURL('image/jpeg',.92)}"><div class="mx-actions"><button class="btn" data-download>Download JPEG</button><button class="btn ghost" data-copy>Copy to clipboard</button></div><p role="status" data-status></p></div>`;
   closeMatchup();document.body.append(modal);document.body.classList.add('mdl-open');modal.querySelector('.x').onclick=closeMatchup;modal.onclick=e=>{if(e.target===modal)closeMatchup();};document.addEventListener('keydown',mdlKey);
-  const name=`week${x.week}-${(W.abbrev||'mfl').toLowerCase()}.jpg`;
+  const name=`week${x.week}-${(W.abbrev||'35dp').toLowerCase()}.jpg`;
   modal.querySelector('[data-download]').onclick=()=>{const l=document.createElement('a');l.href=c.toDataURL('image/jpeg',.92);l.download=name;l.click();};
   modal.querySelector('[data-copy]').onclick=async()=>{const status=modal.querySelector('[data-status]');try{if(!navigator.clipboard?.write||!window.ClipboardItem)throw Error('unavailable');
     // Browsers currently accept PNG clipboard images; the saved/share card is JPEG.
@@ -4012,7 +4012,7 @@ VIEWS.feedback=function(){
     try{const kind=fields.get('kind'),title=String(fields.get('title')||'').trim(),message=String(fields.get('message')||'').trim();
       const r=await fetch('/api/site-feedback',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({requestId,kind,teamId:fields.get('team')?+fields.get('team'):null,title,message,page:fields.get('page'),image:photo})});const data=await r.json();if(!r.ok)throw new Error(data.error);
       // server couldn't reach the push sender: queue the alert for SwagCityBallers (team 4) only
-      if(data.notified===false){try{await sb.from('push_queue').insert({title:kind==='problem'?'New site problem':'New suggestion',body:(title||message||'Photo attached').slice(0,140),team_ids:[4]});}catch(err){}}
+      if(data.notified===false){try{await sb.from('push_queue').insert({title:kind==='problem'?'New site problem':'New suggestion',body:(title||message||'Photo attached').slice(0,140),team_ids:[10]});}catch(err){}}
       form.reset();photo=null;preview.hidden=true;requestId=crypto.randomUUID();msg.textContent='Report #'+data.id+' submitted. Thank you.';}
     catch(e){msg.textContent=e.message||'Could not submit. Please retry.';}finally{button.disabled=false;}};return v;
 };
@@ -4069,7 +4069,7 @@ function trackNotification(event="check",installedEvent=false){
   return trackingQueue.catch(()=>{});
 }
 /* ---------- push notifications (PWA Web Push) ---------- */
-const VAPID_PUBLIC="BCP5Xjk7asig6WQCDpuGLW4fCfpqh3l_S7b0BrOssz8utUtgo7Atn1q0kSD9iQmKQ45nnyMen5CXajhduY1Tx4I";
+const VAPID_PUBLIC="BOLqiAU9H5THEb5v9K01_AUHsjBlcv_G4HISt9AWfRW7BI4i7UOZQKzWWguW9oSYhDbu6f2jflwQ7DXftVhjxVk";
 function urlB64(b64){const pad="=".repeat((4-b64.length%4)%4);const s=(b64+pad).replace(/-/g,"+").replace(/_/g,"/");const raw=atob(s);const a=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)a[i]=raw.charCodeAt(i);return a;}
 const pushSupported=()=>("serviceWorker" in navigator)&&("PushManager" in window)&&("Notification" in window);
 async function currentSub(){try{const r=await navigator.serviceWorker.getRegistration();return r?await r.pushManager.getSubscription():null;}catch(e){return null;}}
@@ -4107,7 +4107,7 @@ function notifyModal(){
   const standalone=window.matchMedia("(display-mode: standalone)").matches||window.navigator.standalone===true;
   let body;
   if(iOS&&!standalone){
-    body=`<div class="metricnote" style="font-size:13.5px;line-height:1.7">On iPhone, push notifications only work once this site is added to your Home Screen:<br><br>1. Tap the <b>Share</b> icon in Safari<br>2. Choose <b>Add to Home Screen</b><br>3. Open <b>MFL</b> from the new icon, then tap the bell again to turn on alerts.</div>`;
+    body=`<div class="metricnote" style="font-size:13.5px;line-height:1.7">On iPhone, push notifications only work once this site is added to your Home Screen:<br><br>1. Tap the <b>Share</b> icon in Safari<br>2. Choose <b>Add to Home Screen</b><br>3. Open <b>35DP</b> from the new icon, then tap the bell again to turn on alerts.</div>`;
   }else if(!pushSupported()){
     body=`<div class="metricnote">This browser doesn't support push notifications.</div>`;
   }else{
@@ -4130,7 +4130,7 @@ function notifyModal(){
   if(off)off.onclick=async()=>{msg.textContent="Turning off…";try{await doUnsubscribe();msg.textContent="Notifications turned off for this device.";refreshNotifyBtn();}catch(e){msg.textContent="Couldn't turn off.";}};
 }
 /* ---------- admin (simple password gate; honor-system UI lock) ---------- */
-const ADMIN_HASH="4cc275ec5dd70703105f67231bb1ad73d2ea0f0e02930316a7298035ccabbe09";
+const ADMIN_HASH="6382deaf1f5dc6e792b76db4a4a7bf2ba468884e000b25e7928e621e27fb23cb";
 let ADMIN=false;
 async function sha256hex(s){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");}
 function adminSet(on){ADMIN=on;try{if(on)localStorage.setItem("mfl-admin",ADMIN_HASH);else localStorage.removeItem("mfl-admin");}catch(e){}refreshAdminUI();}
@@ -4532,7 +4532,7 @@ function boot(){
   const br=document.getElementById("abBrand");if(br)br.onclick=goHome;
   document.getElementById("lgname").textContent=m.leagueName;
   {const sub=document.getElementById("lgsub"),id=document.createElement("span");id.className="lgid";id.textContent=` · ESPN League ${m.leagueId}`;sub.textContent=`${m.season} Season`;sub.append(id);}
-  document.getElementById("mark").textContent="MFL";
+  document.getElementById("mark").textContent="35DP";
   document.getElementById("chips").innerHTML=
     `<span class="chip gold">${m.size} teams</span><span class="chip">${m.ppr} PPR</span><span class="chip">${m.regularSeasonWeeks}-wk season</span><span class="chip">${m.playoffTeamCount} playoff</span>`;
   setFresh();

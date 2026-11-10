@@ -1,4 +1,4 @@
-// Mitch Fantasy League — Web Push sender (Supabase Edge Function).
+// 35 Dollar Pot — Web Push sender (Supabase Edge Function).
 //
 // Called by:
 //   • Supabase Database Webhooks on INSERT/UPDATE to
@@ -63,7 +63,7 @@ export default {
 
     // Keep the existing database webhook, but queue trade events instead of pushing.
     if (payload?.table === "trade_block") {
-      const response = await fetch("https://mitch-fantasy.netlify.app/.netlify/functions/trade-block-events", {
+      const response = await fetch("https://35-dollar-pot.netlify.app/.netlify/functions/trade-block-events", {
         method: "POST",
         headers: { "content-type": "application/json", "x-notify-secret": NOTIFY_SECRET },
         body: JSON.stringify(payload),
@@ -98,7 +98,7 @@ export default {
       const hashes = await Promise.all(targets.map(async (r: any) => Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(r.endpoint)))).map(n => n.toString(16).padStart(2, "0")).join("")));
       const allowed = new Set<string>();
       for (let offset = 0; offset < hashes.length; offset += 500) {
-        const policy = await fetch("https://mitch-fantasy.netlify.app/api/push-policy", {
+        const policy = await fetch("https://35-dollar-pot.netlify.app/api/push-policy", {
           method: "POST", headers: { "content-type": "application/json", "x-notify-secret": NOTIFY_SECRET },
           body: JSON.stringify({ hashes: hashes.slice(offset, offset + 500), category }), signal: AbortSignal.timeout(8000),
         });
@@ -129,7 +129,7 @@ export default {
     // Keep delivery outcomes in the Netlify site log. Never send subscription endpoints or keys.
     let logged = false;
     try {
-      const report = await fetch("https://mitch-fantasy.netlify.app/api/site-activity", {
+      const report = await fetch("https://35-dollar-pot.netlify.app/api/site-activity", {
         method: "POST",
         headers: { "content-type": "application/json", "x-notify-secret": NOTIFY_SECRET },
         body: JSON.stringify({ category: "notification", detail: JSON.stringify({ title: note.title, body: note.body, teams: note.teamIds || "everyone", sent, removed, failed, suppressed, total: targets.length }) }),
