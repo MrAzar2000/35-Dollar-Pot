@@ -1,8 +1,8 @@
 import { getDatabase } from '@netlify/database';
 import { getStore } from '@netlify/blobs';
 import { isAdmin } from '../lib/site-activity.mjs';
-// New reports notify only SwagCityBallers (ESPN team 4, the league admin's team).
-const NOTIFY_TEAM_ID = 4;
+// New reports notify only SwagCityBallers (ESPN team 10, the league admin's team).
+const NOTIFY_TEAM_ID = 10;
 const IMAGE_TYPES: Record<string, string> = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/gif': 'gif' };
 const MAX_IMAGE_BYTES = 4_000_000;
 const reply = (body: unknown, status = 200) => Response.json(body, { status, headers: { 'Cache-Control': 'no-store' } });

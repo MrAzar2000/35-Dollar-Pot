@@ -31,7 +31,7 @@ test('feedback validates content, stores an idempotent report and supports admin
  assert.equal((await h.handler(request('site-feedback',{kind:'problem',title:''}))).status,400);assert.equal(h.writes.length,0);
  const r=await h.handler(request('site-feedback',{requestId:crypto.randomUUID(),teamId:null,kind:'problem',title:'Scoreboard fails',message:'Tap Week 8 to reproduce',page:'scoreboard'}));
  assert.equal(r.status,201);assert.equal((await r.json()).id,42);assert.match(h.writes[0].query,/ON CONFLICT/);
- assert.deepEqual(h.pushes.map(p=>p.teamIds),[[4]]);assert.equal(h.pushes[0].title,'New site problem');
+ assert.deepEqual(h.pushes.map(p=>p.teamIds),[[10]]);assert.equal(h.pushes[0].title,'New site problem');
  const admin=harness('site-feedback',true);assert.equal((await admin.handler(request('site-feedback',{id:42,status:'resolved'},'PATCH'))).status,200);assert.match(admin.writes[0].query,/UPDATE site_feedback/);
 });
 test('feedback accepts a missing subject and a photo-only report, storing the photo in blobs',async()=>{
@@ -41,7 +41,7 @@ test('feedback accepts a missing subject and a photo-only report, storing the ph
  assert.equal(h.writes.length,0);assert.equal(h.blobs.length,0);
  const id=crypto.randomUUID(),r=await h.handler(request('site-feedback',{requestId:id,teamId:3,kind:'suggestion',message:'',page:'',image:'data:image/jpeg;base64,/9j/4AAQ'}));
  assert.equal(r.status,201);assert.equal(h.blobs[0].store,'feedback-photos');assert.equal(h.blobs[0].key,id+'.jpg');
- assert.equal(h.writes[0].params[3],'');assert.equal(h.writes[0].params[6],id+'.jpg');assert.deepEqual(h.pushes[0].teamIds,[4]);assert.equal(h.pushes[0].body,'Photo attached');
+ assert.equal(h.writes[0].params[3],'');assert.equal(h.writes[0].params[6],id+'.jpg');assert.deepEqual(h.pushes[0].teamIds,[10]);assert.equal(h.pushes[0].body,'Photo attached');
  const noSubject=await h.handler(request('site-feedback',{requestId:crypto.randomUUID(),teamId:null,kind:'problem',message:'Standings blank',page:'standings'}));
  assert.equal(noSubject.status,201);assert.equal(h.pushes[1].body,'Standings blank');
 });

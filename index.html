@@ -1541,7 +1541,7 @@ document.addEventListener("click",e=>{const n=e.target.closest&&e.target.closest
 document.addEventListener("click",e=>{const n=e.target.closest("[data-tid]");if(!n||n.closest("[data-mid]")||n.closest("[data-team]")||n.closest("[data-goto]"))return;
   if(e.target.closest("button,a,input,select"))return;const tid=+n.dataset.tid;if(!teamById[tid])return;e.preventDefault();goTeam(tid);});
 // hover a section title to see what it means
-const TITLE_HELP={"All-Play Record":"Your record if you played all 11 other teams every week.","Luck Index":"Actual wins minus expected wins. Expected wins per week = share of the other 11 teams your score beat.",
+const TITLE_HELP={"All-Play Record":"Your record if you played all 9 other teams every week.","Luck Index":"Actual wins minus expected wins. Expected wins per week = share of the other 9 teams your score beat.",
   "Consistency":"How much your weekly score swings (standard deviation). Lower = steadier.","Strength of Schedule":"Average season PPG of the opponents you've faced.","Lineup Efficiency":"Points scored divided by the best possible lineup from your starters + bench that week.",
   "Schedule Swap":"Your record if you'd played each other team's schedule.","Best Pickups":"Waiver and free-agent adds ranked by points scored as a starter.","Single-Game Records":"Best and worst single-week performances this season.",
   "Top 5":"Top five weekly scores this season.","Streaks":"Longest winning and losing runs this season.","Week by Week":"Every team's score each week; green = won, red = lost.","Defensive Ratings":"Points allowed plus how far below their average your opponents scored.",
@@ -1753,7 +1753,7 @@ function recapCard(){
   const row=(l,body,num)=>`<div class="recap-row"><span class="rl">${l}</span><span class="rv">${body}</span>${num?`<span class="rn">${num}</span>`:""}</div>`;
   let h=`<div class="card card-p" style="margin-bottom:16px"><div class="sub-h" style="margin-top:0">Week ${W} in review</div>`;
   h+=row("Top score",`<span class="nm">${esc(hi.t.name)}</span> <span style="color:var(--ink-3)">vs ${esc(hi.o.name)}</span>`,fmt(hi.sc,1));
-  h+=row("Low score · pays $10",`<span class="nm">${esc(lo.t.name)}</span> <span style="color:var(--ink-3)">vs ${esc(lo.o.name)}</span>`,fmt(lo.sc,1));
+  h+=row("Low score",`<span class="nm">${esc(lo.t.name)}</span> <span style="color:var(--ink-3)">vs ${esc(lo.o.name)}</span>`,fmt(lo.sc,1));
   h+=row("Closest game",`<span class="nm">${esc(clw.name)}</span> <span style="color:var(--ink-3)">beat</span> ${esc(cll.name)}`,"by "+fmt(Math.abs(cl.homeScore-cl.awayScore),2));
   if(up)h+=row("Biggest upset",`<span class="nm">${esc(up.w.name)}</span> <span style="color:var(--ink-3)">beat</span> ${esc(up.l.name)} <span style="color:var(--ink-3)">(${fmt(up.gap,1)} PPG better coming in)</span>`,`${fmt(up.ws,1)}–${fmt(up.ls,1)}`);
   if(bench&&bench.left>0)h+=row("Most left on bench",`<span class="nm">${esc(bench.t.name)}</span> <span style="color:var(--ink-3)">best possible lineup was ${fmt(bench.left,1)} pts better</span>`,fmt(bench.left,1));
@@ -1961,7 +1961,7 @@ VIEWS.standings=function(){
       ${[s.expW,s.apPct!=null?s.apPct*100:null,s.hi,s.lo,s.std].map((value,j)=>`<td class="num ${j===1&&ST.started&&value!=null?toneCls(value-50):""}">${ST.started&&value!=null?fmt(value,1)+(j===1?"%":""):"—"}</td>`).join("")}</tr>`;
   });
   html+=`</tbody></table></div>`;
-  html+=`<div class="metricnote"><b>Ranked by record, then total points (PF) as the tiebreaker.</b> <b>PCT</b> win % (ties½). <b>PF/PA</b> total points for/against. <b>PPG</b> points per game. <b>PA/G</b> points opponents scored per game. <b>STRK</b> current streak (W3 = won the last 3). <b>EXP W</b> expected wins. <b>ALL-PLAY %</b> win rate against every team each week. <b>HIGH/LOW</b> best and lowest finalized weekly score. <b>SPREAD</b> weekly scoring standard deviation (lower is steadier). <b>LUCK</b> = actual wins minus expected wins. Expected wins: each week, the share of the other 11 teams a score would have beaten (beat 8 of 11 = 0.73 wins), added up. Positive means a team has won more than its scoring "deserved". Rank stays in record/PF order while sorting. The playoff cut (top ${D.meta.playoffTeamCount}) appears only in default standings order. Confirm league-specific tiebreaks in ESPN.</div>`;
+  html+=`<div class="metricnote"><b>Ranked by record, then total points (PF) as the tiebreaker.</b> <b>PCT</b> win % (ties½). <b>PF/PA</b> total points for/against. <b>PPG</b> points per game. <b>PA/G</b> points opponents scored per game. <b>STRK</b> current streak (W3 = won the last 3). <b>EXP W</b> expected wins. <b>ALL-PLAY %</b> win rate against every team each week. <b>HIGH/LOW</b> best and lowest finalized weekly score. <b>SPREAD</b> weekly scoring standard deviation (lower is steadier). <b>LUCK</b> = actual wins minus expected wins. Expected wins: each week, the share of the other 9 teams a score would have beaten (beat 6 of 9 = 0.67 wins), added up. Positive means a team has won more than its scoring "deserved". Rank stays in record/PF order while sorting. The playoff cut (top ${D.meta.playoffTeamCount}) appears only in default standings order. Confirm league-specific tiebreaks in ESPN.</div>`;
   const v=el(html);
   v.querySelectorAll("button[data-k]").forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(standSort.key===k)standSort.dir*=-1;else{standSort.key=k;standSort.dir=(k==="team")?1:-1;}setTab("standings");});
   return v;
@@ -1977,7 +1977,7 @@ VIEWS.power=function(){
   html+=`<div class="grid" style="gap:9px">`;
   pr.forEach(r=>{
     const s=ST.S[r.team.id];
-    const w=r.score!=null?(r.score/maxScore*100):(100-(r.proj-1)/11*70);
+    const w=r.score!=null?(r.score/maxScore*100):(100-(r.proj-1)/Math.max(1,D.teams.length-1)*70);
     html+=`<div class="card card-p pwcard" style="display:flex;align-items:center;gap:14px;padding:12px 16px">
       <div style="font-family:var(--font-display);font-weight:900;font-size:22px;width:30px;text-align:center;color:${r.rank<=3?"var(--accent)":"var(--ink-3)"}">${r.rank}</div>
       ${badge(r.team,"lg")}
@@ -2666,11 +2666,11 @@ VIEWS.analytics=function(){
   html+=scheduleSwap();
   html+=`<div class="metricnote"><b>Pts&gt;Med</b> weeks scoring above the league median. <b>Close</b> record in games decided by ≤10 pts. <b>Blowout</b> games decided by ≥40. <b>Avg Margin</b> mean point differential. <b>Hi/Lo</b> best & worst single-week score.</div>`;
   html+=`<details class="explain analytics-explain" style="margin-top:20px"><summary>What these metrics mean</summary><div class="ex-grid">
-    <div class="ex-item"><h4>Luck Index</h4><p><b>Actual wins − expected wins.</b> Each week a team's score is compared with the other 11; beating 8 of them = 8/11 = 0.73 expected wins. Added up over the season. +1.5 means about 1½ more wins than the scoring earned.</p></div>
+    <div class="ex-item"><h4>Luck Index</h4><p><b>Actual wins − expected wins.</b> Each week a team's score is compared with the other 9; beating 6 of them = 6/9 = 0.67 expected wins. Added up over the season. +1.5 means about 1½ more wins than the scoring earned.</p></div>
     <div class="ex-item"><h4>All-Play Record</h4><p>The record a team would have if it played <b>every team every week</b>. A week where you outscore 9 teams is 9-2. The best read on how good a team is, regardless of who it drew.</p></div>
     <div class="ex-item"><h4>Consistency</h4><p>The <b>standard deviation</b> of weekly scores, in points. 10 = most weeks land within about 10 points of the team's average; 30 = boom-or-bust.</p></div>
     <div class="ex-item"><h4>Strength of Schedule</h4><p>The average season PPG of the opponents a team has played. Higher = tougher opponents. Uses each opponent's full-season average, not what they scored in that game.</p></div>
-    <div class="ex-item"><h4>Pts &gt; Med</h4><p>Weeks a team finished in the top half of the league's 12 scores. 5/6 = above the middle score in 5 of 6 weeks.</p></div>
+    <div class="ex-item"><h4>Pts &gt; Med</h4><p>Weeks a team finished in the top half of the league's 10 scores. 5/6 = above the middle score in 5 of 6 weeks.</p></div>
     <div class="ex-item"><h4>Close / Blowout · Avg Margin</h4><p>W-L in games decided by 10 points or fewer, and by 40 or more. Avg Margin is the average of (your score − opponent's score).</p></div>
   </div></details>`;
   return el(html);
@@ -2810,7 +2810,7 @@ VIEWS.history=function(){
     </div></div>`;
   // superlatives
   const byTitles=owners.slice().sort((a,b)=>b.titles-a.titles||wp(b)-wp(a));
-  const elig=owners.filter(o=>o.seasons>=3);
+  const elig=owners.filter(o=>o.seasons>=Math.min(3,seasons.length));
   const bestWp=elig.slice().sort((a,b)=>wp(b)-wp(a))[0];
   const mostPo=owners.slice().sort((a,b)=>b.playoffs-a.playoffs)[0];
   let bestSeason=null,mostPF=null;
@@ -3369,8 +3369,8 @@ VIEWS.shame=function(){
     const lowpf=all.slice().sort((a,b)=>a.pf/a.gp-b.pf/b.gp).slice(0,5).map(r=>({who:`<b>${esc(r.team)}</b>`,sub:`${on(r.ownerId)} · ${r.year}`,val:fmt(r.pf/r.gp,1)+" PPG"}));
     const last={};all.forEach(r=>{if(r.rank===r.size)(last[r.ownerId]=last[r.ownerId]||[]).push(r.year);});
     const lastL=Object.entries(last).sort((a,b)=>b[1].length-a[1].length).slice(0,5).map(([id,ys])=>({who:`<b>${on(id)}</b>`,sub:ys.join(", "),val:ys.length+"×"}));
-    const miss=H.owners.filter(o=>o.seasons>=3).map(o=>({o,n:o.seasons-o.playoffs})).sort((a,b)=>b.n-a.n||a.o.playoffs-b.o.playoffs).slice(0,5).map(x=>({who:`<b>${esc(x.o.name)}</b>`,sub:`${x.o.playoffs} playoff trips in ${x.o.seasons} seasons`,val:x.n+" missed"}));
-    const avg=H.owners.filter(o=>o.seasons>=3).sort((a,b)=>b.avgFinish-a.avgFinish).slice(0,5).map(o=>({who:`<b>${esc(o.name)}</b>`,sub:`${o.seasons} seasons`,val:fmt(o.avgFinish,1)}));
+    const miss=H.owners.filter(o=>o.seasons>=Math.min(3,H.seasons.length)).map(o=>({o,n:o.seasons-o.playoffs})).sort((a,b)=>b.n-a.n||a.o.playoffs-b.o.playoffs).slice(0,5).map(x=>({who:`<b>${esc(x.o.name)}</b>`,sub:`${x.o.playoffs} playoff trips in ${x.o.seasons} seasons`,val:x.n+" missed"}));
+    const avg=H.owners.filter(o=>o.seasons>=Math.min(3,H.seasons.length)).sort((a,b)=>b.avgFinish-a.avgFinish).slice(0,5).map(o=>({who:`<b>${esc(o.name)}</b>`,sub:`${o.seasons} seasons`,val:fmt(o.avgFinish,1)}));
     html+=`<div class="sub-h">All-time (${H.seasons[0].year}–${H.seasons[H.seasons.length-1].year})</div><div class="grid g-2">`+shameList("Worst records","Lowest win percentage in a season.",worst)
       +shameList("Weakest offenses","Lowest points per game in a season.",lowpf)+shameList("Last-place finishes","Seasons finishing dead last.",lastL)
       +shameList("Most missed playoffs","Managers with 3+ seasons.",miss)+shameList("Worst average finish","Average final standing, 3+ seasons.",avg)+`</div>`;
@@ -3768,7 +3768,7 @@ VIEWS.feedback=function(){
     button.disabled=true;msg.textContent='Submitting…';
     try{const kind=fields.get('kind'),title=String(fields.get('title')||'').trim(),message=String(fields.get('message')||'').trim();
       const r=await fetch('/api/site-feedback',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({requestId,kind,teamId:fields.get('team')?+fields.get('team'):null,title,message,page:fields.get('page'),image:photo})});const data=await r.json();if(!r.ok)throw new Error(data.error);
-      // server couldn't reach the push sender: queue the alert for SwagCityBallers (team 4) only
+      // server couldn't reach the push sender: queue the alert for SwagCityBallers (team 10) only
       if(data.notified===false){try{await sb.from('push_queue').insert({title:kind==='problem'?'New site problem':'New suggestion',body:(title||message||'Photo attached').slice(0,140),team_ids:[10]});}catch(err){}}
       form.reset();photo=null;preview.hidden=true;requestId=crypto.randomUUID();msg.textContent='Report #'+data.id+' submitted. Thank you.';}
     catch(e){msg.textContent=e.message||'Could not submit. Please retry.';}finally{button.disabled=false;}};return v;
