@@ -1,0 +1,48 @@
+{
+  "version": "1.6.7",
+  "title": "Parlay results",
+  "updatedAt": null,
+  "changes": [
+    "New Parlay Results page under More charts every manager's parlay success rate, with league totals and a week-by-week recap.",
+    "Each team's profile has a Parlay results dropdown at the bottom of its main box with that manager's picks all season and their success rate."
+  ],
+  "history": [
+    {
+      "version": "1.5.1",
+      "title": "Cleaner top banner",
+      "changes": [
+        "The top banner shows just the week, and your team name gets room first so it fits in full on most phones.",
+        "The notification bell moved off the banner; turn alerts on or off from More > Notification preferences."
+      ]
+    },
+    {
+      "version": "1.5.0",
+      "title": "One Matchup page & easier navigation",
+      "changes": [
+        "Matchup and Lineups are now one Matchup page: player cards for both lineups, the win probability graph, and the what-if calculator, with a compact week picker at the top.",
+        "The page buttons under each tab stay inside that tab and fit on one line.",
+        "Pull down from anywhere on the page, including matchup cards, to refresh.",
+        "Tables on phones no longer cut off numbers and names at the edge.",
+        "A slimmer top banner shows the current week on one line, and player sheets show the player's photo."
+      ]
+    },
+    {
+      "version": "1.4.0",
+      "title": "Team inboxes & mobile matchups",
+      "changes": [
+        "Team inboxes keep your notifications in one place, with unread badges beside your team name.",
+        "Redesigned mobile matchups and rosters make player scores, projections, game details, and ownership easier to scan.",
+        "My Team now includes more scoring, lineup-efficiency, matchup, and FAAB metrics.",
+        "Player analysis includes position-specific weekly charts and add/drop trends."
+      ]
+    },
+    {
+      "version": "1.3.0",
+      "title": "Offline access & league rules",
+      "changes": [
+        "The site opens from saved league data on weak signal and refreshes when connected.",
+        "League Rules brings ESPN roster, scoring, playoff, and waiver settings into the site."
+      ]
+    }
+  ]
+}

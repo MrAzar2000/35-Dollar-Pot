@@ -1,0 +1,3 @@
+The footer shows a simple website version (for example, v1.2.0), an update date, and an expandable What’s new panel on every page. Release notes include the current update and up to two preceding releases. The footer loads independently of the league feed.
+
+Edit the major.minor.patch version and manager-facing changes in site-version.json when preparing a release. Move previous release notes into the history array. The build preparation script stamps the deployment preparation time but does not append a fingerprint or change the version number. Dates display in the visitor’s timezone, with UTC available in the tooltip. The timestamp describes file preparation, not the exact publication time.

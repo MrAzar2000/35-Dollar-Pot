@@ -1,0 +1,16 @@
+[build]
+  command = "node scripts/write-site-version.mjs"
+  publish = "."
+
+[[headers]]
+  for = "/site-version.json"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[images]
+  remote_images = ['https://a\.espncdn\.com/i/headshots/nfl/players/full/[0-9]+\.png']
